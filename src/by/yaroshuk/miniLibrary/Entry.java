@@ -21,6 +21,6 @@ public class Entry {
 
             System.out.println(ex.getMessage());
         }
-        System.out.println("The file has been written");
+        System.out.println("Информация была запсана.");
     }
 }
