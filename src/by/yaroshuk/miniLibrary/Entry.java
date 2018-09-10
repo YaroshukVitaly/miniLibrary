@@ -11,7 +11,7 @@ public class Entry {
         Scanner scannerMetod = new Scanner(System.in);
         String text = scannerMetod.nextLine(); // строка для записи
         try (
-                FileOutputStream fos = new FileOutputStream("F://Vitalya//miniLibrary//resources//notes.txt")) {
+                FileOutputStream fos = new FileOutputStream("F://Vitalya//miniLibrary//resources//library.txt")) {
             // перевод строки в байты
             byte[] buffer = text.getBytes();
 

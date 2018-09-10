@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Reading {
     public static void red() {
-        try(FileInputStream fin=new FileInputStream("F://Vitalya//miniLibrary//resources//notes.txt"))
+        try(FileInputStream fin=new FileInputStream("F://Vitalya//miniLibrary//resources//library.txt"))
         {
             int i=- 1;
             while((i=fin.read())!=-1){
