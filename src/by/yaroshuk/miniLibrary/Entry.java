@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class Entry {
 
-    public static void write() {
+   public static void write() {
         System.out.println("Введите книгу!");
-        Scanner scannerMetod = new Scanner(System.in);
-        String text = scannerMetod.nextLine(); // строка для записи
+       Scanner scannerMetod = new Scanner(System.in);
+       String text = scannerMetod.nextLine(); // строка для записи
         try (
                 FileOutputStream fos = new FileOutputStream("F://Vitalya//miniLibrary//resources//library.txt")) {
             // перевод строки в байты

@@ -15,10 +15,10 @@ public class Main {
 
         System.out.println(library);
 
-        Entry entry = new Entry();
-        entry.write();
-        Reading reading = new Reading();
-        reading.red();
+      //  Entry entry = new Entry();
+     //   entry.write();
+      //  Reading reading = new Reading();
+    //    reading.red();
 
     }
 }
