@@ -6,14 +6,13 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Library library = new Library(5);
-        library.add("Война и мир", "Толстой");
-        library.add("Война и мир", "Толстой");
-        library.add("Война и мир", "Толстой");
-        library.add("Война и мир", "Толстой");
-        library.add("Война и мир", "Толстой");
+       UserConsoleInpunReader consoleInpunReader = new UserConsoleInpunReader();
+       consoleInpunReader.start();
 
-        System.out.println(library);
+
+
+
+
 
       //  Entry entry = new Entry();
      //   entry.write();
