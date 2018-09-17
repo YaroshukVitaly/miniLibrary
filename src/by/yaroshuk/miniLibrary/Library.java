@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-
     private Save save;
     private List<Book> books;
     private static long nextIndex = 1;
@@ -27,6 +26,34 @@ public class Library {
     public List<Book> list(){
         return new ArrayList<>(books);
     }
+    public Book search(long id){
+        for (Book book : books){
+            if (book.getId() == id){
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public boolean delete (long id){
+        Book book = search(id);
+        return books.remove(book);
+    }
+    public List<Long> sendOnSave(){
+        List<Book> toRemove = new ArrayList<>();
+        for (Book book : books) {
+            boolean accepted = save.queue(book);
+            if (accepted){
+                toRemove.add(book);
+            }
+        }
+        List<Long> ids = new ArrayList<>();
+        for (Book book : toRemove){
+            ids.add(book.getId());
+            books.remove(book);
+        }
+        return ids;
+    }
 
 
     @Override
@@ -35,4 +62,5 @@ public class Library {
                 "books=" + books +
                 '}';
     }
+
 }
