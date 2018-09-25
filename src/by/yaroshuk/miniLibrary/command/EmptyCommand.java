@@ -2,11 +2,9 @@ package by.yaroshuk.miniLibrary.command;
 
 import by.yaroshuk.miniLibrary.Library;
 
-public class ExitCommand implements UserCommand {
-
+public class EmptyCommand implements UserCommand {
     @Override
     public void execute(Library library) {
-        System.out.println("Exiting");
-        System.exit(0);
+
     }
 }

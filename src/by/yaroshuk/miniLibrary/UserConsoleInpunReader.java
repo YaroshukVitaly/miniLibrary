@@ -12,28 +12,32 @@ public class UserConsoleInpunReader {
     }
 
     public UserCommand nextCommand(){
-        Scanner s = new Scanner(scanner.nextLine());
-        String token = s.next();
-        if (token.equalsIgnoreCase(  "remove")){
-            return parseRemove(s);
-        }else if (token.equalsIgnoreCase("add")){
-            return  parseAdd(s);
-        }else if (token.equalsIgnoreCase("send")){
-            if (!s.hasNext()) {
-                return new SendCommand();
+            Scanner s = new Scanner(scanner.nextLine());
+        if (s.hasNext()) {
+            String token = s.next();
+            if (token.equalsIgnoreCase("remove")) {
+                return parseRemove(s);
+            } else if (token.equalsIgnoreCase("add")) {
+                return parseAdd(s);
+            } else if (token.equalsIgnoreCase("send")) {
+                if (!s.hasNext()) {
+                    return new SendCommand();
+                }
+            } else if (token.equalsIgnoreCase("help")) {
+                if (!s.hasNext()) {
+                    return new HelpComand();
+                }
+            } else if (token.equalsIgnoreCase("list")) {
+                if (!s.hasNext()) {
+                    return new ListCommand();
+                }
+            } else if (token.equalsIgnoreCase("exit")) {
+                if (!s.hasNext()) {
+                    return new ExitCommand();
+                }
             }
-        }else if (token.equalsIgnoreCase("help")){
-            if (!s.hasNext()) {
-                return new HelpComand();
-            }
-        }else if (token.equalsIgnoreCase("list")){
-            if (!s.hasNext()) {
-                return new ListCommand();
-            }
-        }else if (token.equalsIgnoreCase("exit")){
-            if (!s.hasNext()){
-                return new ExitCommand();
-            }
+        }else {
+            return new  EmptyCommand();
         }
         return null;
     }
