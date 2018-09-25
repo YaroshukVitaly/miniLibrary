@@ -17,9 +17,9 @@ public class RemoveCommand implements UserCommand {
     public void execute(Library library) {
         boolean delete = library.delete(id);
         if (delete){
-            System.out.println("Book " + id + " was successfully removed!");
+            printer.println("Book " + id + " was successfully removed!");
         }else {
-            System.out.println("Book " + id + " was not found!");
+            printer.println("Book " + id + " was not found!");
         }
     }
 }

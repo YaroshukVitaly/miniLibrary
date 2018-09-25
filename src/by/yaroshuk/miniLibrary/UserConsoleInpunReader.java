@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class UserConsoleInpunReader {
     private Scanner scanner;
+    private OutputPrinter printer;
 
-    public UserConsoleInpunReader () {
+    public UserConsoleInpunReader(OutputPrinter printer) {
+        this.printer = printer;
         scanner = new Scanner(System.in);
     }
 
@@ -46,9 +48,11 @@ public class UserConsoleInpunReader {
         if (s.hasNext()) {
             return null;
         }
-            System.out.println("Enter name: ");
+            printer.println("Enter name: ");
+            printer.printUserPrompt();
             String name = scanner.nextLine();
-            System.out.println("Enter author: ");
+            printer.println("Enter author: ");
+            printer.printUserPrompt();
             String author = scanner.nextLine();
             return new AddCommand(name, author);
 

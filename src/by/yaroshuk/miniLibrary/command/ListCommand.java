@@ -7,9 +7,9 @@ public class ListCommand implements UserCommand {
 
     @Override
     public void execute(Library library) {
-        System.out.println("List of books: ");
+        printer.println("List of books: ");
         for (Book book : library.list()){
-            System.out.println(book);
+            printer.println(book);
         }
 
     }

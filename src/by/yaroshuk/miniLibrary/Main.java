@@ -4,16 +4,15 @@ package by.yaroshuk.miniLibrary;
 import by.yaroshuk.miniLibrary.command.*;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         Library library = new Library();
-        UserConsoleInpunReader consoleInpunReader = new UserConsoleInpunReader();
+        UserConsoleInpunReader consoleInpunReader = new UserConsoleInpunReader(printer);
         while (true) {
             UserCommand userCommand = consoleInpunReader.nextCommand();
             if (userCommand == null){
-                System.out.println("Unknown command!");
+                printer.println("Unknown command!");
             }else {
                 execute(userCommand, library, consoleInpunReader);
             }
@@ -24,10 +23,6 @@ public class Main {
        userCommand.execute(library);
     }
 
-    //  Entry entry = new Entry();
-        //   entry.write();
-        //  Reading reading = new Reading();
-        //    reading.red();
 
 }
 

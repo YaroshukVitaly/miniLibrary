@@ -6,7 +6,7 @@ public class ExitCommand implements UserCommand {
 
     @Override
     public void execute(Library library) {
-        System.out.println("Exiting");
+        printer.println("Exiting");
         System.exit(0);
     }
 }

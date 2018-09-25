@@ -9,6 +9,6 @@ public class SendCommand implements UserCommand {
     @Override
     public void execute(Library library) {
         List<Long> longs = library.sendOnSave();
-        System.out.println("Following book were sent:" + longs);
+        printer.println("Following book were sent:" + longs);
     }
 }
