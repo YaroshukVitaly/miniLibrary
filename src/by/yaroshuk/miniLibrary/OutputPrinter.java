@@ -8,12 +8,19 @@ public class OutputPrinter {
     public OutputPrinter(PrintStream outStream) {
         this.outStream = outStream;
     }
+
+    public void printSeparator(){
+        outStream.println("-----------------------------------------------------");
+        outStream.println();
+    }
+
     public void println(String s){
         outStream.println(s);
-
-    }public void print(String s){
+    }
+    public void print(String s){
         outStream.print(s);
     }
+
     public void printf (String format, Object... args){
         outStream.printf(format, args);
     }
