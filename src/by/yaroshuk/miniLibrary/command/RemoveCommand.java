@@ -24,4 +24,11 @@ public class RemoveCommand implements UserCommand {
         }
         printer.printSeparator();
     }
+
+    @Override
+    public String toString() {
+        return "RemoveCommand{" +
+                "id=" + id +
+                '}';
+    }
 }

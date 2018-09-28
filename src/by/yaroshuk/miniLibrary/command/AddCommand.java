@@ -15,8 +15,16 @@ public class AddCommand implements UserCommand {
     @Override
     public void execute(Library library, OutputPrinter printer) {
        long id = library.add(name, author);
-       printer.print("Added book: id = " + id);
+       printer.println("Added book: id = " + id);
        printer.printSeparator();
 
+    }
+
+    @Override
+    public String toString() {
+        return "AddCommand{" +
+                "name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                '}';
     }
 }

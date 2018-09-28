@@ -12,6 +12,6 @@ public class ListCommand implements UserCommand {
         for (Book book : library.list()){
             printer.println(book + "");
         }
-
+        printer.printSeparator();
     }
 }
