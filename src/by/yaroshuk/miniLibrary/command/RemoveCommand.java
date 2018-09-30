@@ -17,6 +17,7 @@ public class RemoveCommand implements UserCommand {
     @Override
     public void execute(Library library, OutputPrinter printer) {
         boolean delete = library.delete(id);
+        printer.println();
         if (delete){
             printer.println("Book " + id + " was successfully removed!");
         }else {

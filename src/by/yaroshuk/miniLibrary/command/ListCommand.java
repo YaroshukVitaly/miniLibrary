@@ -8,9 +8,11 @@ public class ListCommand implements UserCommand {
 
     @Override
     public void execute(Library library, OutputPrinter printer) {
+        printer.println();
         printer.println("List of books: ");
         for (Book book : library.list()){
-            printer.println(book + "");
+            printer.print(book);
+            printer.printSmallSeparator();
         }
         printer.printSeparator();
     }
