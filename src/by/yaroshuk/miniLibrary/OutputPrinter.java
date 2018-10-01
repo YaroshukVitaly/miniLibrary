@@ -56,4 +56,8 @@ public class OutputPrinter {
         outStream.println("-------------");
 
     }
+
+    public void printHelp(String comand, String description) {
+        outStream.printf("%20s - %s%n", comand, description);
+    }
 }
