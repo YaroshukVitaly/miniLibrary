@@ -11,6 +11,8 @@ public class Main {
         Library library = new Library();
         OutputPrinter printer = new OutputPrinter(System.out);
         UserConsoleInpunReader consoleInpunReader = new UserConsoleInpunReader(printer);
+        printer.println("Используйте следущие команды: ");
+        printer.printHelp();
         while (true) {
             printer.printUserPrompt();
             UserCommand userCommand = consoleInpunReader.nextCommand();

@@ -57,7 +57,26 @@ public class OutputPrinter {
 
     }
 
-    public void printHelp(String comand, String description) {
-        outStream.printf("%20s - %s%n", comand, description);
+    public void printHelp(UserCommandLineCommand command) {
+        String fullName = command.getName();
+        for (UserCommandLineCommand.Parameter parameter : command.getParameters()) {
+            fullName += " [" + parameter.getName() + "]";
+        }
+        outStream.printf("%15s - %s%n", fullName, command.getDescription());
+        for (UserCommandLineCommand.Parameter    parameter : command.getParameters()) {
+            outStream.printf("%20s: %s%n", parameter.getName(), parameter.getDescription());
+        }
+    }
+
+    public void printHelp() {
+        printSeparator();
+        printHelp(new UserCommandLineCommand("add", "Добавить новую книгу в библиотеку."));
+        printHelp(new UserCommandLineCommand("remove", "Удалить выбранную книгу.", new UserCommandLineCommand.Parameter("id", "номер книги.")));
+        printHelp(new UserCommandLineCommand("send", "Cохранить книги."));
+        printHelp(new UserCommandLineCommand("list", "Вывести список всех книг в библиотеке."));
+        printHelp(new UserCommandLineCommand("help", "Вывести список команд."));
+        printHelp(new UserCommandLineCommand("exit", "Выйти из программы"));
+        println();
+        printSeparator();
     }
 }
