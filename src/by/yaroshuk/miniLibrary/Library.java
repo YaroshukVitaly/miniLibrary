@@ -1,7 +1,15 @@
 package by.yaroshuk.miniLibrary;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.sun.org.apache.xalan.internal.lib.ExsltStrings.split;
 
 public class Library {
     private Save save;
@@ -20,6 +28,7 @@ public class Library {
         Book book = new Book(name, author);
         book.setId(nextIndex++);
         books.add(book);
+        save();
         return book.getId();
     }
 
@@ -37,6 +46,7 @@ public class Library {
 
     public boolean delete (long id){
         Book book = search(id);
+        save();
         return books.remove(book);
     }
     public List<Long> sendOnSave(){
@@ -52,6 +62,7 @@ public class Library {
             ids.add(book.getId());
             books.remove(book);
         }
+        save();
         return ids;
     }
 
@@ -61,6 +72,34 @@ public class Library {
         return "Library{" +
                 "books=" + books +
                 '}';
+    }
+
+    public void save(){
+        try (PrintWriter writer = new PrintWriter(Paths.get("books.txt").toFile())){
+            for (Book book : books){
+                writer.print(book.getId());
+                writer.print("\t");
+                writer.print(book.getName());
+                writer.print("\t");
+                writer.print(book.getAuthor());
+                writer.print("\t");
+                writer.println();
+            }
+        }catch (FileNotFoundException e){
+            System.out.println("File not found!");
+        }
+    }
+
+    public List<Book> read(){
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("books.txt"));
+            for (String line : lines){
+                String[] tokens = line.split("\t");
+                long id = Long.parseLong(tokens[0]);
+            }
+        } catch (IOException e) {
+            System.out.println("Error read file!");
+        }
     }
 
 }
