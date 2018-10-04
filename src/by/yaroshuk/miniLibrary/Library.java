@@ -4,12 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltStrings.split;
 
 public class Library {
     private Save save;
@@ -23,6 +21,14 @@ public class Library {
     public Library(int count) {
         books = new ArrayList<>(count);
         save = new Save();
+        List<Book> existingBooks = read();
+        books.addAll(existingBooks);
+
+        for (Book existingBook : existingBooks){
+            nextIndex = Math.max(nextIndex, existingBook.getId() + 1);
+        }
+
+//        nextIndex = existingBooks.stream().map(Book::getId).max(Long::compare).orElseGet(() -> 1L) + 1;
     }
     public long add(String name, String author){
         Book book = new Book(name, author);
@@ -92,14 +98,18 @@ public class Library {
 
     public List<Book> read(){
         try {
+            List<Book> books = new ArrayList<>();
             List<String> lines = Files.readAllLines(Paths.get("books.txt"));
             for (String line : lines){
                 String[] tokens = line.split("\t");
                 long id = Long.parseLong(tokens[0]);
+                books.add(new Book(id, tokens[1], tokens [2]));
             }
+
         } catch (IOException e) {
             System.out.println("Error read file!");
         }
+        return books;
     }
 
 }
