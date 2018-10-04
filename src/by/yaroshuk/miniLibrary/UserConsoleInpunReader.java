@@ -21,11 +21,7 @@ public class UserConsoleInpunReader {
                 return parseRemove(s);
             } else if (token.equalsIgnoreCase("add")) {
                 return parseAdd(s);
-            } else if (token.equalsIgnoreCase("send")) {
-                if (!s.hasNext()) {
-                    return new SendCommand();
-                }
-            } else if (token.equalsIgnoreCase("help")) {
+            }  else if (token.equalsIgnoreCase("help")) {
                 if (!s.hasNext()) {
                     return new HelpComand();
                 }

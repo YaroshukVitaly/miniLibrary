@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        Library library = new Library();
+        LibraryBuisinessLogic logic = new LibraryBuisinessLogic();
         OutputPrinter printer = new OutputPrinter(System.out);
         UserConsoleInpunReader consoleInpunReader = new UserConsoleInpunReader(printer);
         printer.println("Используйте следущие команды: ");
@@ -19,13 +19,13 @@ public class Main {
             if (userCommand == null){
                 printer.println("Unknown command!");
             }else {
-                execute(userCommand, library, consoleInpunReader, printer);
+                execute(userCommand, logic, consoleInpunReader, printer);
             }
         }
     }
 
-    private static void execute(UserCommand userCommand, Library library, UserConsoleInpunReader consoleInpunReader, OutputPrinter printer){
-       userCommand.execute(library, printer);
+    private static void execute(UserCommand userCommand, LibraryBuisinessLogic logic, UserConsoleInpunReader consoleInpunReader, OutputPrinter printer){
+       userCommand.execute(logic, printer);
     }
 
 

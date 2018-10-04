@@ -1,6 +1,6 @@
 package by.yaroshuk.miniLibrary.command;
 
-import by.yaroshuk.miniLibrary.Library;
+import by.yaroshuk.miniLibrary.LibraryBuisinessLogic;
 import by.yaroshuk.miniLibrary.OutputPrinter;
 
 public class RemoveCommand implements UserCommand {
@@ -15,8 +15,8 @@ public class RemoveCommand implements UserCommand {
     }
 
     @Override
-    public void execute(Library library, OutputPrinter printer) {
-        boolean delete = library.delete(id);
+    public void execute(LibraryBuisinessLogic logic, OutputPrinter printer) {
+        boolean delete = logic.delete(id);
         printer.println();
         if (delete){
             printer.println("Book " + id + " was successfully removed!");

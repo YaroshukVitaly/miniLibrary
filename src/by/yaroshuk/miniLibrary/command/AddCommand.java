@@ -1,6 +1,6 @@
 package by.yaroshuk.miniLibrary.command;
 
-import by.yaroshuk.miniLibrary.Library;
+import by.yaroshuk.miniLibrary.LibraryBuisinessLogic;
 import by.yaroshuk.miniLibrary.OutputPrinter;
 
 public class AddCommand implements UserCommand {
@@ -13,11 +13,11 @@ public class AddCommand implements UserCommand {
     }
 
     @Override
-    public void execute(Library library, OutputPrinter printer) {
-       long id = library.add(name, author);
+    public void execute(LibraryBuisinessLogic logic, OutputPrinter printer) {
+       long id = logic.add(name, author);
        printer.println();
        printer.println("Added book: ");
-       printer.print(library.search(id));
+       printer.print(logic.search(id));
        printer.printSeparator();
 
     }
